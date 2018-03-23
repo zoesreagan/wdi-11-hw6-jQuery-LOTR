@@ -21,25 +21,50 @@ var body = document.body;
 var section = '<section></section>';
 
 function makeMiddleEarth() {
-  // your answers here
+  const section = $('<section>').attr('id', "middle-earth")
+    for (let i = 0; i < lands.length; i++) {
+  // do stuff with lands- assign article tag
+      const article = $('<article>');
+      section.append(article);
+      const h1 = $('<h1>').text(lands[i]);
+      article.append(h1);
+    }
+  $('body').append(section)
 }
 
 makeMiddleEarth();
 
 function makeHobbits(){
-  // your answers here
+// display an `unordered list` of hobbits in the shire
+const ul = $('<ul>')
+//create li items
+  for (let i = 0; i < hobbits.length; i++) {
+    const li = $('<li>').text(hobbits[i]);
+    ul.append(li)
+}
+$('article').eq(0).append(ul)
+
+
+// (which is the second article tag on the page) find shire article tag
+ // give each hobbit a class of `hobbit`
+
 }
 
 makeHobbits();
 
 function keepItSecretKeepItSafe(){
-  // your answers here
+  $('<div>').attr('id', 'the-ring')
+  $('<div>').addClass('magic-imbued-jewlery')
+  $('#the-ring').append('Frodo')
 }
 
 keepItSecretKeepItSafe();
 
 function makeBuddies(){
-  // your answers here
+// create an `aside` tag
+const aside = $('<aside>');
+// attach an `unordered list` of the `'buddies'` in the aside
+// insert your aside as a child element of `rivendell`
 }
 
 makeBuddies();
