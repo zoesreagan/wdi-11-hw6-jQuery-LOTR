@@ -21,31 +21,23 @@ var body = document.body;
 var section = '<section></section>';
 
 function makeMiddleEarth() {
-  const section = $('<section>').attr('id', "middle-earth")
+  $('<section>').attr('id', "middle-earth").appendTo($('body'))
     for (let i = 0; i < lands.length; i++) {
   // do stuff with lands- assign article tag
-      const article = $('<article>');
-      section.append(article);
-      const h1 = $('<h1>').text(lands[i]);
-      article.append(h1);
-    }
-  $('body').append(section)
+  $('<article>').appendTo($('#middle-earth')).append($('<h1>').text(lands[i]));
 }
 
 makeMiddleEarth();
 
 function makeHobbits(){
-// display an `unordered list` of hobbits in the shire
-const ul = $('<ul>')
-//create li items
+// display an `unordered list` of hobbits in the shire, which is index 0 in "lands"
+  $('<ul>').appendTo($('article').eq(0));
+//create and unordered list for hobbit items
+//print the hobbit names
+//append hobbits to ul
   for (let i = 0; i < hobbits.length; i++) {
-    const li = $('<li>').text(hobbits[i]);
-    ul.append(li)
+    $('<li>').text(hobbits[i]).addClass("hobbit").appendTo($('ul'))
 }
-$('article').eq(0).append(ul).addClass('hobbit')
-// (which is the second article tag on the page) find shire article tag
-// give each hobbit a class of `hobbit`
-}//adding class???
 
 makeHobbits();
 
@@ -67,17 +59,17 @@ for(let i = 0; i <buddies.length; i++) {
 makeBuddies();
 
 function beautifulStranger(){
-  // your answers here
-  //print element in list element corresponding to Strider; update using .text
+// your answers here
+//print element in list element corresponding to Strider; update using .text
   $('li').eq(7).text("Aragorn")
 }
 
 beautifulStranger();
 
 function leaveTheShire(){
-  // assemble the `hobbits` and move them to `rivendell`
-  // your answers here
-  //append unordered list to Lands-Rivendell which is index one of article tag "array"
+// assemble the `hobbits` and move them to `rivendell`
+// your answers here
+//append unordered list to Lands-Rivendell which is index one of article tag "array"
   $('ul').appendTo($('article').eq(1))
 }
 
@@ -102,31 +94,72 @@ function forgeTheFellowship() {
 forgeTheFellowship();
 
 function theBalrog(){
-  // your answers here
+// your answers here
+// change the `'Gandalf'` text to `'Gandalf the White'`
+//create new variable to hold Gandalf with his ordered list index
+const gandalf = $('li').eq(4);
+// apply the following style to the element:
+//make the // background 'white', add a grey border
+gandalf.css({
+    'background' : 'white',
+    'border' : '5px solid grey'
+})
 }
 
 theBalrog();
 
 function hornOfGondor() {
-  // your answers here
+// your answers here
+// pop up an alert that the horn of gondor has been blown
+// Boromir's been killed by the Uruk-hai!
+alert("The Horn of Gondor has been blown. Boromir has been killed by the Uruk-hai!")
+// Remove `Boromir` from the Fellowship
+//create variable for Boromir with his li index and .remove()
+const boromir = $('li').eq(8);
+boromir.remove();
 }
 
 hornOfGondor();
 
 function itsDangerousToGoAlone() {
-  // your answers here
+// your answers here
+// take `Frodo` and `Sam` out of the fellowship and move // them to `Mordor`
+//create variable for Mordor with articl tag 'array' index position
+const mordor = $('article').eq(2)
+//create variables for both Sam & Frodo with their li index and append to Mordor
+const frodo = $('li').eq(0);
+const samwise = $('li').eq(1);
+
+frodo.appendTo(mordor)
+samwise.appendTo(mordor)
+
+// add a div with an id of `'mount-doom'` and append to `Mordor`
+$('<div id="mount-doom">').appendTo(mordor)
 }
 
 itsDangerousToGoAlone();
 
 function weWantsIt() {
-  // your answers here
+// your answers here
+const mordor = $('article').eq(2)
+// Create a div with an id of `'gollum'` and add it to Mordor
+const gollum = $('<div id="gollum">')
+gollum.appendTo(mordor);
+// Remove `the ring` from `Frodo` and give it to `Gollum`
+$('#the-ring').appendTo(gollum)
+// Move Gollum into Mount Doom
+gollum.appendTo($('#mount-doom'))
 }
 
 weWantsIt();
 
 function thereAndBackAgain(){
-  // your answers here
+// your answers here
+// remove `Gollum` and `the Ring` from the document
+gollum.remove()
+// Move all the `hobbits` back to `the shire`
+
+$("hobbits").appendTo($('article').eq(0));
 }
 
 thereAndBackAgain();
